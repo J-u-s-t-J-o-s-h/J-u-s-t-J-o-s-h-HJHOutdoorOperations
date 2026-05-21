@@ -1,14 +1,32 @@
 'use client'
 
-import { useState, useEffect, useRef, type MouseEvent } from 'react'
+import { useState, useEffect, useRef, type MouseEvent as ReactMouseEvent } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Phone, ChevronDown, Shovel, Home, Shield, Wrench, Images, MessageSquare, CircleDollarSign } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Logo } from '@/components/logo'
 
+type NavLinkItem = {
+  href: string
+  label: string
+  icon: typeof Home | typeof CircleDollarSign | null
+}
+
+type NavDropdownItem = {
+  label: string
+  icon: typeof Wrench
+  dropdown: Array<{
+    href: string
+    label: string
+    icon: typeof Shovel | typeof Shield | typeof Images
+  }>
+}
+
+type NavItem = NavLinkItem | NavDropdownItem
+
 // Simplified nav - grouped into 4 main items + dropdown
-const navItems = [
+const navItems: NavItem[] = [
   { href: '/', label: 'Home', icon: Home },
   { href: '/about', label: 'About', icon: null },
   { href: '/#testimonials', label: 'Reviews', icon: null },
@@ -57,7 +75,7 @@ export function SiteNav() {
 
   // Close dropdown when clicking outside
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
+    const handleClickOutside = (e: globalThis.MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setDropdownOpen(false)
       }
@@ -70,7 +88,7 @@ export function SiteNav() {
   const showHeaderLogo = !isHome || scrolledPastHeroThreshold
   const useSolidHeader = !isHome || scrolledPastHeroThreshold
 
-  const handleLogoClick = (e: MouseEvent<HTMLAnchorElement>) => {
+  const handleLogoClick = (e: ReactMouseEvent<HTMLAnchorElement>) => {
     setMobileOpen(false)
     setDropdownOpen(false)
 
@@ -85,7 +103,7 @@ export function SiteNav() {
     }
   }
 
-  const handleNavItemClick = (e: MouseEvent<HTMLAnchorElement>, href?: string) => {
+  const handleNavItemClick = (e: ReactMouseEvent<HTMLAnchorElement>, href?: string) => {
     if (!href || !href.startsWith('/#')) return
 
     const targetId = href.split('#')[1]

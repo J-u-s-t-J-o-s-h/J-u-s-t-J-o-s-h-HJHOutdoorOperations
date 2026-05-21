@@ -4,6 +4,7 @@ import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
 import { StickyCallButton } from '@/components/sticky-call-button'
 import { SkipLink } from '@/components/skip-link'
+import { getSiteUrl } from '@/lib/site-url'
 import './globals.css'
 
 const barlow = Barlow({
@@ -13,9 +14,7 @@ const barlow = Barlow({
   display: 'swap',
 })
 
-const defaultMetadataBase =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000')
+const defaultMetadataBase = getSiteUrl()
 
 export const viewport: Viewport = {
   width: 'device-width',

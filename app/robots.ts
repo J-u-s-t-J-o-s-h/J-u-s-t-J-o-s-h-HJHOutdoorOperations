@@ -1,8 +1,7 @@
 import type { MetadataRoute } from 'next'
+import { getSiteUrl } from '@/lib/site-url'
 
-const defaultMetadataBase =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000')
+const siteUrl = getSiteUrl()
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -10,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: `${defaultMetadataBase}/sitemap.xml`,
-    host: defaultMetadataBase,
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   }
 }
