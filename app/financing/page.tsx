@@ -4,19 +4,7 @@ import { ArrowRight, CheckCircle2, Phone } from 'lucide-react'
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { PremiumSectionBackdrop } from '@/components/premium-section-backdrop'
-import { siteMedia } from '@/lib/site-media'
-
-const belowGroundShelters = [
-  { model: '6x8 Standard Slope', price: '$4,650' },
-  { model: '5x11 Easy Entry', price: '$5,100' },
-  { model: '7x10 XL', price: '$5,500' },
-]
-
-const walkInSafeRooms = [
-  { model: '5x7', price: '$6,200' },
-  { model: '6x8', price: '$6,850' },
-  { model: '7x9', price: '$7,700' },
-]
+import { ShelterPricingTables } from '@/components/shelter-pricing'
 
 const faqs = [
   {
@@ -106,6 +94,18 @@ export default function FinancingPage() {
           <div className="absolute inset-x-0 top-0 z-[2] h-[6px] bg-gradient-to-r from-transparent via-equipment-gold to-transparent shadow-[0_0_20px_rgba(212,175,55,0.75)]" />
           <div className="relative z-[1] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 lg:py-20 text-matte-black">
             <div className="space-y-10 sm:space-y-12 lg:space-y-14">
+              <Link
+                href="/pricing"
+                className="group flex flex-col gap-3 rounded-2xl border border-storm-blue/30 bg-storm-blue/[0.07] px-5 py-4 transition-colors hover:bg-storm-blue/[0.12] sm:flex-row sm:items-center sm:justify-between sm:gap-4"
+              >
+                <span className="text-base sm:text-lg font-semibold text-gunmetal">
+                  Looking for shelter prices? View our full Storm Shelter Pricing page.
+                </span>
+                <span className="inline-flex shrink-0 items-center gap-2 text-sm font-bold tracking-wide uppercase text-storm-blue">
+                  View Pricing
+                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </Link>
               <div id="how" className="card-shell-light border-storm-blue/35 ring-1 ring-storm-blue/20 p-5 sm:p-8 lg:p-10">
                 <div className="max-w-4xl">
                   <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-gunmetal leading-tight">
@@ -178,64 +178,8 @@ export default function FinancingPage() {
                   </p>
                 </div>
 
-                <div className="mt-7 sm:mt-8 space-y-7 sm:space-y-8">
-                  {[
-                    { title: 'Below Ground Shelters', rows: belowGroundShelters },
-                    { title: 'Walk-In Safe Rooms', rows: walkInSafeRooms },
-                  ].map((group) => (
-                    <div key={group.title}>
-                      <h3 className="mb-3 text-xs sm:text-sm font-extrabold tracking-[0.18em] uppercase text-storm-blue">
-                        {group.title}
-                      </h3>
-                      <div className="overflow-x-auto rounded-2xl border border-soft-khaki/55 bg-bone-linen">
-                        <table className="w-full min-w-[18rem] sm:min-w-[20rem] table-fixed">
-                          <colgroup>
-                            <col className="w-[72%]" />
-                            <col className="w-[28%]" />
-                          </colgroup>
-                          <thead className="bg-gunmetal text-left">
-                            <tr>
-                              <th className="px-3 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-[11px] font-bold tracking-[0.12em] uppercase text-bone-linen">Model</th>
-                              <th className="px-3 sm:px-5 py-3 sm:py-4 text-right text-[10px] sm:text-[11px] font-bold tracking-[0.12em] uppercase text-bone-linen">Price</th>
-                            </tr>
-                          </thead>
-                          <tbody className="divide-y divide-soft-khaki/60">
-                            {group.rows.map((row, idx) => (
-                              (() => {
-                                const isPopular = group.title === 'Walk-In Safe Rooms' && row.model === '6x8'
-                                return (
-                                  <tr
-                                    key={row.model}
-                                    className={
-                                      isPopular
-                                        ? 'bg-equipment-gold/12'
-                                        : idx % 2 === 0
-                                          ? 'bg-transparent'
-                                          : 'bg-section-light/65'
-                                    }
-                                  >
-                                    <td className="px-3 sm:px-5 py-3 sm:py-4 text-gunmetal text-base sm:text-[1.12rem] leading-snug">
-                                      <div className="flex flex-wrap items-center gap-2">
-                                        <span>{row.model}</span>
-                                        {isPopular && (
-                                          <span className="inline-flex items-center rounded-full border border-equipment-gold/70 bg-equipment-gold/25 px-2 py-0.5 text-[10px] font-bold tracking-[0.1em] uppercase text-earth-brown">
-                                            Most Popular
-                                          </span>
-                                        )}
-                                      </div>
-                                    </td>
-                                    <td className="px-3 sm:px-5 py-3 sm:py-4 text-right text-storm-blue font-extrabold text-xl sm:text-[1.55rem] lg:text-[1.75rem] tabular-nums leading-none">
-                                      {row.price}
-                                    </td>
-                                  </tr>
-                                )
-                              })()
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  ))}
+                <div className="mt-7 sm:mt-8">
+                  <ShelterPricingTables />
                 </div>
 
                 <p className="mt-4 text-xs sm:text-sm text-clay-taupe leading-relaxed">

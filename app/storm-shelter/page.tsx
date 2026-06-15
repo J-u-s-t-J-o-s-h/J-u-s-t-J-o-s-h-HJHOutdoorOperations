@@ -8,6 +8,7 @@ import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { PremiumSectionBackdrop } from '@/components/premium-section-backdrop'
 import { siteMedia } from '@/lib/site-media'
+import { aboveGroundStartingPrice, belowGroundStartingPrice } from '@/lib/shelter-pricing'
 
 const faqs = [
   {
@@ -304,6 +305,41 @@ export default function StormShelterPage() {
               {faqs.map((faq) => (
                 <FAQItem key={faq.q} {...faq} />
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing CTA */}
+        <section className="relative isolate overflow-hidden">
+          <PremiumSectionBackdrop fillClassName="bg-section-mid" texture="linen" />
+          <div className="relative z-[1] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 text-matte-black">
+            <div className="card-shell-light border-storm-blue/30 ring-1 ring-equipment-gold/20 p-6 sm:p-8 lg:p-10">
+              <div className="grid gap-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:items-center">
+                <div>
+                  <span className="brand-divider mb-4 block h-1 w-12 rounded-full shadow-[0_0_18px_rgba(212,175,55,0.35)]" />
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gunmetal leading-tight text-balance">
+                    See Shelter Sizes &amp; Upfront Pricing
+                  </h2>
+                  <p className="mt-4 max-w-2xl text-clay-taupe text-base sm:text-lg leading-relaxed">
+                    Below-ground shelters starting at {belowGroundStartingPrice} and above-ground shelters starting at {aboveGroundStartingPrice}. Compare every size and baseline installed price before you request an estimate.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-3 sm:gap-4">
+                  <Link
+                    href="/pricing"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-4 bg-storm-blue hover:bg-steel-blue text-bone-linen font-bold text-sm tracking-wide uppercase rounded-xl transition-colors shadow-lg shadow-storm-blue/35 ring-1 ring-bone-linen/10"
+                  >
+                    See Shelter Sizes &amp; Upfront Pricing
+                    <ArrowRight size={14} />
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-4 border-2 border-gunmetal hover:bg-gunmetal hover:text-bone-linen text-gunmetal font-bold text-sm tracking-wide uppercase rounded-xl transition-colors"
+                  >
+                    Request Free Estimate
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </section>

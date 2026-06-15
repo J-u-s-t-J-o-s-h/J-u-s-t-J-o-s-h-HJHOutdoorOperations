@@ -27,6 +27,7 @@ import { SiteFooter } from '@/components/site-footer'
 import { PremiumSectionBackdrop } from '@/components/premium-section-backdrop'
 import { ElfsightWidget } from '@/components/elfsight-widget'
 import { homeProjectCards, siteMedia } from '@/lib/site-media'
+import { aboveGroundStartingPrice, belowGroundStartingPrice } from '@/lib/shelter-pricing'
 
 const services = [
   {
@@ -300,7 +301,7 @@ function AnimatedSection({
   return (
     <div
       ref={ref}
-      className={`opacity-0 translate-y-8 transition-all duration-700 ease-out ${className}`}
+      className={`max-md:opacity-100 max-md:translate-y-0 opacity-0 translate-y-8 transition-all duration-700 ease-out ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
@@ -660,7 +661,7 @@ export default function HomePage() {
                   <p className="text-matte-black text-lg leading-relaxed mb-6">
                     Living in tornado country isn&apos;t optional — but being unprepared is. We install underground storm shelters that are anchored properly, waterproofed, and built to give your family a real safe room when it matters most.
                   </p>
-                  <ul className="flex flex-col gap-3 mb-8">
+                  <ul className="flex flex-col gap-3 mb-6">
                     {[
                       'Underground and outdoor walk-in saferoom options',
                       'Professional installation from certified crew',
@@ -673,13 +674,25 @@ export default function HomePage() {
                       </li>
                     ))}
                   </ul>
-                  <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="mb-8 rounded-2xl border border-storm-blue/25 bg-storm-blue/[0.06] px-5 py-4">
+                    <p className="text-matte-black font-semibold leading-relaxed">
+                      Below-ground shelters starting at {belowGroundStartingPrice} and above-ground shelters starting at {aboveGroundStartingPrice}.
+                      <span className="block text-clay-taupe font-normal">Compare shelter sizes and upfront pricing before requesting a free estimate.</span>
+                    </p>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4">
                     <Link
-                      href="/storm-shelter"
+                      href="/pricing"
                       className="inline-flex items-center gap-2 px-8 py-4 bg-storm-blue hover:bg-steel-blue text-bone-linen font-bold text-base tracking-wide uppercase rounded-xl transition-colors shadow-lg shadow-storm-blue/35 ring-1 ring-bone-linen/10 hover:shadow-storm-blue/50"
                     >
-                      Explore Storm Shelter Options
+                      Explore Sizes &amp; Pricing
                       <ArrowRight size={16} />
+                    </Link>
+                    <Link
+                      href="/storm-shelter"
+                      className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-gunmetal hover:bg-gunmetal hover:text-bone-linen text-gunmetal font-bold text-base tracking-wide uppercase rounded-xl transition-colors"
+                    >
+                      Explore Storm Shelter Options
                     </Link>
                     <Link
                       href="/contact"

@@ -4,7 +4,7 @@ import { getSiteUrl } from '@/lib/site-url'
 const baseUrl = new URL(getSiteUrl())
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ['', '/about', '/services', '/projects', '/contact', '/storm-shelter', '/financing']
+  const routes = ['', '/about', '/services', '/projects', '/contact', '/storm-shelter', '/pricing', '/financing']
 
   return routes.map((route) => ({
     url: new URL(route || '/', baseUrl).toString(),
