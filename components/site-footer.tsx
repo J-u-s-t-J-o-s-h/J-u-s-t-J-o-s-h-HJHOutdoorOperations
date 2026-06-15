@@ -16,6 +16,7 @@ import {
   MessageSquare,
   FileText,
   CircleDollarSign,
+  Tag,
 } from 'lucide-react'
 import { Logo } from '@/components/logo'
 
@@ -31,6 +32,7 @@ const quickLinks = [
   { label: 'Home', href: '/', icon: Home },
   { label: 'About Us', href: '/about', icon: Users },
   { label: 'Our Work', href: '/projects', icon: Images },
+  { label: 'Pricing', href: '/pricing', icon: Tag },
   { label: 'Financing', href: '/financing', icon: CircleDollarSign },
   { label: 'Contact', href: '/contact', icon: MessageSquare },
   { label: 'Get a Quote', href: '/contact', icon: FileText },
