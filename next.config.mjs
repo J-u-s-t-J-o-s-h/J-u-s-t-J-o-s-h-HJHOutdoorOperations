@@ -98,7 +98,9 @@ const cspDirectives = [
   "frame-src 'self' https://elfsight.com https://*.elfsight.com https://vercel.live",
   "worker-src 'self' blob: https://elfsight.com https://*.elfsight.com",
   "child-src 'self' blob: https://elfsight.com https://*.elfsight.com",
-  ...(isProd ? ['upgrade-insecure-requests'] : []),
+  // ALLOW_HTTP_PREVIEW=1 lets a local `next start` be viewed over plain HTTP
+  // from other devices (e.g. phone on LAN). Never set in real deployments.
+  ...(isProd && process.env.ALLOW_HTTP_PREVIEW !== '1' ? ['upgrade-insecure-requests'] : []),
 ].join('; ')
 
 const nextConfig = {

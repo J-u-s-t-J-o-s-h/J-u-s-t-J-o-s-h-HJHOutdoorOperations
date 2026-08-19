@@ -4,9 +4,10 @@ import { useEffect, useState } from 'react'
 
 export function HomeHeroBackdrop({ src }: { src: string }) {
   const [show, setShow] = useState(false)
+  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setShow(true), 3000)
+    const timer = window.setTimeout(() => setShow(true), 2500)
     return () => window.clearTimeout(timer)
   }, [])
 
@@ -17,7 +18,8 @@ export function HomeHeroBackdrop({ src }: { src: string }) {
     <img
       src={src}
       alt=""
-      className="absolute inset-0 h-full w-full object-cover object-center"
+      onLoad={() => setLoaded(true)}
+      className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-700 ease-out ${loaded ? 'opacity-100' : 'opacity-0'}`}
       decoding="async"
       fetchPriority="low"
       aria-hidden="true"

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
+import { preload } from 'react-dom'
 import {
   Shield,
   Wrench,
@@ -20,7 +21,6 @@ import { SiteFooter } from '@/components/site-footer'
 import { PremiumSectionBackdrop } from '@/components/premium-section-backdrop'
 import { AnimatedSection } from '@/components/animated-section'
 import { HomeHeroBackdrop } from '@/components/home-hero-backdrop'
-import { HomeHeroLogo } from '@/components/home-hero-logo'
 import { HomeHashScroll } from '@/components/home-hash-scroll'
 import { homeProjectCards, siteMedia } from '@/lib/site-media'
 import { aboveGroundStartingPrice, belowGroundStartingPrice } from '@/lib/shelter-pricing'
@@ -63,6 +63,8 @@ const trustPillars = [
 const projects = [...homeProjectCards]
 
 export default function HomePage() {
+  preload('/brand/logo-hero.webp', { as: 'image', fetchPriority: 'high' })
+
   const serviceChips = ['Storm Shelters', 'Excavation', 'Land Clearing', 'Dirt Work', 'Septic Systems', 'And More']
   const trustItems = [
     'Licensed & Insured',
@@ -109,18 +111,10 @@ export default function HomePage() {
 
       <main id="main-content" className="relative z-10">
         {/* ====== HERO SECTION ====== */}
-        <section id="home-hero" className="flex min-h-[100dvh] flex-col justify-start pb-6 pt-[calc(4.2rem+env(safe-area-inset-top,0px))] sm:pb-6 sm:pt-[calc(4.5rem+env(safe-area-inset-top,0px))] md:justify-end md:pb-12 md:pt-[calc(7rem+env(safe-area-inset-top,0px))] lg:pb-16 lg:pt-[calc(7.65rem+env(safe-area-inset-top,0px))]">
+        <section id="home-hero" className="flex min-h-[100dvh] flex-col justify-end pb-6 pt-[calc(4.2rem+env(safe-area-inset-top,0px))] sm:pb-6 sm:pt-[calc(4.5rem+env(safe-area-inset-top,0px))] md:pb-12 md:pt-[calc(7rem+env(safe-area-inset-top,0px))] lg:pb-16 lg:pt-[calc(7.65rem+env(safe-area-inset-top,0px))]">
           <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(290px,0.88fr)] md:gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(420px,0.96fr)] lg:gap-14">
                 <div>
-                  <h1 className="text-shadow-strong mb-4 max-w-3xl text-[2.2rem] font-bold leading-[1.08] text-bone-linen sm:mb-5 sm:text-[2.6rem] md:text-5xl lg:mb-7 lg:text-7xl">
-                    Storm Shelters &amp; Site Work Done Right.
-                  </h1>
-
-                  <p className="text-shadow-strong mb-5 max-w-2xl text-sm leading-relaxed text-warm-concrete sm:text-[1.06rem] md:mb-7 md:text-lg lg:text-xl">
-                    HJH Outdoor Operations provides storm shelter installation, excavation, land clearing, grading, and septic services for Oklahoma homeowners and landowners.
-                  </p>
-
                   <div className="mb-5 flex w-full max-w-xl flex-col gap-3 sm:mb-7 sm:max-w-none sm:flex-row sm:items-center sm:gap-4 lg:mb-9">
                     <Link
                       href="/contact"
@@ -156,33 +150,38 @@ export default function HomePage() {
                       Licensed &amp; Insured
                     </span>
                   </div>
+
+                  <h1 className="text-shadow-strong mb-4 max-w-3xl text-balance text-[1.9rem] font-bold leading-[1.08] text-bone-linen sm:mb-5 sm:text-[2.6rem] md:text-5xl lg:mb-7 lg:text-7xl">
+                    Storm Shelters &amp; Site Work Done Right.
+                  </h1>
+
+                  <p className="text-shadow-strong max-w-2xl text-[1rem] leading-relaxed text-warm-concrete sm:text-[1.06rem] md:text-lg lg:text-xl">
+                    HJH Outdoor Operations provides storm shelter installation, excavation, land clearing, grading, and septic services for Oklahoma homeowners and landowners.
+                  </p>
                 </div>
 
-                <div className="relative mx-auto mb-3 w-full min-w-0 max-sm:max-w-[10.5rem] sm:mb-5 sm:max-w-[14rem] md:mb-0 md:mt-0 md:max-w-[18rem] lg:-mt-12 lg:max-w-[36rem]">
-                  <div className="rounded-full ring-[3px] ring-[#0A3D62] p-2.25 sm:p-2 md:p-2.5">
+                <div className="order-first relative mx-auto mb-3 w-full min-w-0 max-sm:max-w-[min(88vw,19rem)] sm:mb-5 sm:max-w-[14rem] md:order-none md:mb-0 md:mt-0 md:max-w-[18rem] lg:-mt-12 lg:max-w-[36rem]">
+                  <div className="rounded-full ring-[3px] ring-[#0A3D62] p-2 md:p-2.5">
                     <div className="rounded-full ring-[2px] ring-[#D4AF37] p-[2px]">
-                      <div className="relative aspect-square overflow-hidden rounded-full border border-bone-linen/12 bg-matte-black/72 p-2.25 shadow-[0_26px_58px_rgba(45,52,54,0.56)] sm:p-0.75 md:p-1.25 lg:p-1.75">
+                      <div className="relative aspect-square overflow-hidden rounded-full border border-bone-linen/12 bg-matte-black/72 p-1.5 shadow-[0_26px_58px_rgba(45,52,54,0.56)] md:p-2 lg:p-2.5">
                         <div
                           className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-equipment-gold/38 to-transparent sm:inset-x-6"
                           aria-hidden="true"
                         />
-                        <div className="relative flex h-full items-center justify-center rounded-full border border-bone-linen/10 bg-gradient-to-br from-bone-linen/[0.06] via-transparent to-bone-linen/[0.02] p-0.75 sm:p-0.75 md:p-1.25">
-                          <div className="relative aspect-square w-full overflow-hidden rounded-full sm:max-w-[84vw]">
-                            {/* eslint-disable-next-line @next/next/no-img-element -- pre-sized static LCP asset, not the image optimizer */}
-                            <img
-                              src="/brand/logo-hero.webp"
-                              alt="HJH Outdoor Operations LLC — storm shelter installation, dirt work, land clearing, Oklahoma"
-                              width={640}
-                              height={640}
-                              fetchPriority="low"
-                              className="h-auto w-full object-contain object-center"
-                            />
-                          </div>
+                        <div className="flex h-full items-center justify-center rounded-full border border-bone-linen/10 bg-gradient-to-br from-bone-linen/[0.06] via-transparent to-bone-linen/[0.02] p-1 md:p-1.5">
+                          {/* eslint-disable-next-line @next/next/no-img-element -- pre-sized static LCP asset, not the image optimizer */}
+                          <img
+                            src="/brand/logo-hero.webp"
+                            alt="HJH Outdoor Operations LLC — storm shelter installation, dirt work, land clearing, Oklahoma"
+                            width={640}
+                            height={640}
+                            fetchPriority="high"
+                            className="h-auto w-full rounded-full object-contain object-center"
+                          />
                         </div>
                       </div>
                     </div>
                   </div>
-                  <HomeHeroLogo />
                 </div>
               </div>
 
