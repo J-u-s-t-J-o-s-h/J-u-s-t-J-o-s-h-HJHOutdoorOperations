@@ -4,6 +4,8 @@ import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
 import { StickyCallButton } from '@/components/sticky-call-button'
 import { SkipLink } from '@/components/skip-link'
+import { JsonLd } from '@/components/json-ld'
+import { localBusinessJsonLd } from '@/lib/json-ld'
 import { getSiteUrl } from '@/lib/site-url'
 import './globals.css'
 
@@ -28,11 +30,15 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultMetadataBase),
-  title: 'HJH Outdoor Operations LLC | Storm Shelter Installation & Excavation | Oklahoma',
+  title: {
+    default: 'HJH Outdoor Operations LLC | Storm Shelter Installation & Excavation | Oklahoma',
+    template: '%s | HJH Outdoor Operations',
+  },
   description:
-    'HJH Outdoor Operations LLC provides professional storm shelter installation, excavation, dirt work, land clearing, site grading, and septic system services across Oklahoma. Get a free quote today.',
+    'Oklahoma storm shelter installation, backhoe service, excavation, dirt work, land clearing, and septic systems. Licensed crew. Free estimates. Call (405) 756-7304.',
   keywords: [
     'storm shelter installation Oklahoma',
+    'backhoe service Oklahoma',
     'excavation contractor Oklahoma',
     'dirt work Oklahoma',
     'land clearing Oklahoma',
@@ -52,7 +58,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'HJH Outdoor Operations LLC',
-    description: 'Storm shelter installation, excavation, and outdoor site services in Oklahoma.',
+    description: 'Storm shelter installation, backhoe service, excavation, and outdoor site work in Oklahoma.',
     type: 'website',
     images: [
       {
@@ -66,7 +72,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'HJH Outdoor Operations LLC',
-    description: 'Storm shelter installation, excavation, and outdoor site services in Oklahoma.',
+    description: 'Storm shelter installation, backhoe service, excavation, and outdoor site work in Oklahoma.',
     images: ['/brand/LogoV-B.svg'],
   },
 }
@@ -88,6 +94,7 @@ export default function RootLayout({
         className="font-sans antialiased min-h-dvh overflow-x-clip pb-[env(safe-area-inset-bottom)]"
         suppressHydrationWarning
       >
+        <JsonLd data={localBusinessJsonLd()} />
         <Script src="https://elfsightcdn.com/platform.js" strategy="afterInteractive" />
         <SkipLink />
         {children}

@@ -905,15 +905,36 @@ export default function HomePage() {
                       <p className="mt-1 text-[11px] font-bold tracking-[0.16em] uppercase text-matte-black/75">Response</p>
                     </div>
                     <div className="col-span-2 flex flex-wrap justify-center gap-2 pt-1">
-                      {['Duncan', 'Chickasha', 'Lawton', 'Altus', 'Blanchard', "Paul's Valley", 'Oklahoma City', 'Ardmore', 'Ada', 'And More'].map((city) => (
-                        <span
-                          key={city}
-                          className="inline-flex items-center gap-2 rounded-xl border border-soft-khaki/55 bg-section-mid/90 px-4 py-2 text-xs font-bold tracking-wide uppercase text-matte-black shadow-sm"
-                        >
-                          <span className="h-1.5 w-1.5 rounded-full bg-storm-blue/85" aria-hidden="true" />
-                          {city}
-                        </span>
-                      ))}
+                      {([
+                        { label: 'Duncan' },
+                        { label: 'Chickasha' },
+                        { label: 'Lawton' },
+                        { label: 'Altus' },
+                        { label: 'Blanchard', href: '/blanchard/storm-shelter-installation' },
+                        { label: "Paul's Valley" },
+                        { label: 'Oklahoma City', href: '/okc/backhoe-service' },
+                        { label: 'Ardmore' },
+                        { label: 'Ada' },
+                        { label: 'And More' },
+                      ] as Array<{ label: string; href?: string }>).map((city) => {
+                        const className =
+                          'inline-flex items-center gap-2 rounded-xl border border-soft-khaki/55 bg-section-mid/90 px-4 py-2 text-xs font-bold tracking-wide uppercase text-matte-black shadow-sm'
+                        const inner = (
+                          <>
+                            <span className="h-1.5 w-1.5 rounded-full bg-storm-blue/85" aria-hidden="true" />
+                            {city.label}
+                          </>
+                        )
+                        return city.href ? (
+                          <Link key={city.label} href={city.href} className={`${className} hover:border-storm-blue/40`}>
+                            {inner}
+                          </Link>
+                        ) : (
+                          <span key={city.label} className={className}>
+                            {inner}
+                          </span>
+                        )
+                      })}
                     </div>
                   </div>
                 </div>

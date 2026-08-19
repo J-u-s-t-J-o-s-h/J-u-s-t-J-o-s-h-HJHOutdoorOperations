@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "sitemap:verify": "node scripts/verify-sitemap.mjs",
     "perf:clean": "node scripts/clean-lighthouse-reports.mjs",
     "perf:audit:mobile": "node scripts/run-lighthouse-profile.mjs mobile",
     "perf:audit:desktop": "node scripts/run-lighthouse-profile.mjs desktop",

@@ -191,7 +191,11 @@ export default function StormShelterPage() {
                   Professional Installation You Can Trust
                 </h2>
                 <p className="text-clay-taupe leading-relaxed mb-4">
-                  We&apos;ve installed storm shelters across Oklahoma for residential and rural properties. We work with quality shelter manufacturers and install every unit to the manufacturer&apos;s specification and local code requirements.
+                  We&apos;ve installed storm shelters across Oklahoma for residential and rural properties, including south-metro towns like{' '}
+                  <Link href="/blanchard/storm-shelter-installation" className="font-semibold text-storm-blue hover:text-steel-blue">
+                    Blanchard
+                  </Link>
+                  . We work with quality shelter manufacturers and install every unit to the manufacturer&apos;s specification and local code requirements.
                 </p>
                 <p className="text-clay-taupe leading-relaxed mb-7">
                   Our crew handles everything: site assessment, excavation, shelter placement, waterproofing, backfill, and cleanup. We take the stress out of the process and leave you with a shelter you can rely on for decades.

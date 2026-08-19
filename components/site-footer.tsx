@@ -22,7 +22,7 @@ import { Logo } from '@/components/logo'
 
 const services = [
   { label: 'Storm Shelters', href: '/storm-shelter', icon: Shield },
-  { label: 'Excavation', href: '/services#excavation', icon: Shovel },
+  { label: 'Excavation', href: '/excavation', icon: Shovel },
   { label: 'Dirt Work', href: '/services#dirt-work', icon: Truck },
   { label: 'Land Clearing', href: '/services#land-clearing', icon: TreePine },
   { label: 'Septic Systems', href: '/services#septic', icon: Droplets },
@@ -190,7 +190,7 @@ export function SiteFooter() {
                   <span className="flex items-center justify-center w-10 h-10 bg-bone-linen/5 rounded-xl shadow-sm ring-1 ring-bone-linen/5">
                     <MapPin size={20} className="text-equipment-gold" aria-hidden="true" />
                   </span>
-                  <span>Serving all of Oklahoma</span>
+                  <span>Based in Marlow, OK · Serving statewide</span>
                 </div>
               </li>
               <li>

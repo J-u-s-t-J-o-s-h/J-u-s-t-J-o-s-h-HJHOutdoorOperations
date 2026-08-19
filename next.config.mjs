@@ -105,6 +105,31 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'hjhoutdoorops.com' }],
+        destination: 'https://www.hjhoutdoorops.com/:path*',
+        permanent: true,
+      },
+      {
+        source: '/bookonline',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/book-online',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/BookOnline',
+        destination: '/contact',
+        permanent: true,
+      },
+    ]
+  },
   images: {
     unoptimized: !isProd,
     formats: ['image/avif', 'image/webp'],

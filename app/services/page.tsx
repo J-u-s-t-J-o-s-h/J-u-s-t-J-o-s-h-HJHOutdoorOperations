@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, CheckCircle2, Phone, Shield, Shovel, Trees, Layers, Droplets, Wrench } from 'lucide-react'
@@ -36,15 +37,16 @@ const services = [
     imageAlt: 'Large excavator working on Oklahoma jobsite',
     forWho: 'Homeowners, builders, and landowners needing earth moved for foundations, ponds, utilities, or drainage.',
     description:
-      'We operate full-size excavation equipment for jobs of all sizes. From residential foundation prep to large-scale pond digging, we get the dirt moved efficiently and leave the site ready for the next phase. We work clean and on schedule.',
+      'We operate backhoes and full-size excavation equipment for jobs of all sizes. From residential foundation prep to large-scale pond digging, we get the dirt moved efficiently and leave the site ready for the next phase. We work clean and on schedule.',
     benefits: [
+      'Backhoe service for residential and rural lots',
       'Foundation and basement excavation',
       'Pond and water feature digging',
       'Utility trench excavation',
       'Drainage channel work',
       'Commercial and residential scopes',
     ],
-    href: '/contact',
+    href: '/excavation',
     cta: 'Request Excavation Quote',
   },
   {
@@ -148,6 +150,13 @@ const services = [
     cta: 'Ask About Your Project',
   },
 ]
+
+export const metadata: Metadata = {
+  title: 'Outdoor Services in Oklahoma',
+  description:
+    'Storm shelter installation, backhoe and excavation, dirt work, land clearing, grading, and septic systems across Oklahoma. Get a free HJH estimate.',
+  alternates: { canonical: '/services' },
+}
 
 export default function ServicesPage() {
   return (

@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: 'What areas do you serve?',
-    a: 'We are based in Oklahoma and serve customers throughout the state, including Duncan, Chickasha, Lawton, Altus, Blanchard, Paul&apos;s Valley, Oklahoma City, Ardmore, Ada, and surrounding areas. For larger projects, we will travel further — give us a call and we can discuss.',
+    a: 'We are based in Marlow, Oklahoma and serve customers throughout the state, including Oklahoma City, Blanchard, Bartlesville, Elk City, Duncan, Chickasha, Lawton, Altus, Paul&apos;s Valley, Ardmore, Ada, and surrounding areas. For larger projects, we will travel further — give us a call and we can discuss.',
   },
   {
     q: 'How do I prepare my site for excavation or land clearing?',
@@ -142,7 +142,7 @@ export default function ContactPage() {
                     <span className="text-gunmetal font-bold text-sm uppercase tracking-wide">Service Area</span>
                   </div>
                   <p className="text-clay-taupe text-sm leading-relaxed">
-                    Serving Oklahoma including Duncan, Chickasha, Lawton, Altus, Blanchard, Paul&apos;s Valley, Oklahoma City, Ardmore, Ada, and surrounding communities.
+                    Serving Oklahoma from Marlow, including Oklahoma City, Blanchard, Bartlesville, Elk City, Duncan, Chickasha, Lawton, Altus, Paul&apos;s Valley, Ardmore, Ada, and surrounding communities.
                   </p>
                 </div>
 

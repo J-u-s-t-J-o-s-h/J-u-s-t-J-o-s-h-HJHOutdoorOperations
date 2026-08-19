@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, CheckCircle2, Phone } from 'lucide-react'
@@ -24,6 +25,13 @@ const values = [
     desc: 'If something isn&apos;t right, we fix it. We&apos;re not done until you&apos;re satisfied with the result.',
   },
 ]
+
+export const metadata: Metadata = {
+  title: 'About HJH Outdoor Operations',
+  description:
+    'Meet HJH Outdoor Operations, a licensed Oklahoma contractor for storm shelters, excavation, and site work. Family owned, based in Marlow.',
+  alternates: { canonical: '/about' },
+}
 
 const stats = [
   { value: '10+', label: 'Years in Operation' },

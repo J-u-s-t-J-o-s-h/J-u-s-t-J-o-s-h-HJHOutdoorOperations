@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, CheckCircle2, Phone } from 'lucide-react'
@@ -5,6 +6,13 @@ import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { PremiumSectionBackdrop } from '@/components/premium-section-backdrop'
 import { ShelterPricingTables } from '@/components/shelter-pricing'
+
+export const metadata: Metadata = {
+  title: 'Storm Shelter Financing',
+  description:
+    'Learn how to finance a storm shelter installation in Oklahoma with HJH Outdoor Operations. Clear estimates to take to your lender.',
+  alternates: { canonical: '/financing' },
+}
 
 const faqs = [
   {

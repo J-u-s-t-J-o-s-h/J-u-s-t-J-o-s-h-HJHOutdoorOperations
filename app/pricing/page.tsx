@@ -13,9 +13,9 @@ import {
 } from '@/lib/shelter-pricing'
 
 export const metadata: Metadata = {
-  title: 'Storm Shelter Pricing | HJH Outdoor Operations',
+  title: 'Storm Shelter Pricing',
   description:
-    'View upfront storm shelter pricing, available sizes, and safe room options from HJH Outdoor Operations.',
+    'View upfront storm shelter pricing, available sizes, and saferoom options from HJH Outdoor Operations. Standard rates within 60 miles of Marlow, OK.',
   alternates: {
     canonical: '/pricing',
   },

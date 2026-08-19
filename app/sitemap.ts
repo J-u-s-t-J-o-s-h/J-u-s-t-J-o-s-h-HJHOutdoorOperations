@@ -1,15 +1,14 @@
 import type { MetadataRoute } from 'next'
+import { PUBLIC_ROUTES } from '@/lib/site-routes'
 import { getSiteUrl } from '@/lib/site-url'
 
 const baseUrl = new URL(getSiteUrl())
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ['', '/about', '/services', '/projects', '/contact', '/storm-shelter', '/pricing', '/financing']
-
-  return routes.map((route) => ({
-    url: new URL(route || '/', baseUrl).toString(),
+  return PUBLIC_ROUTES.map((route) => ({
+    url: new URL(route.path === '/' ? '/' : route.path, baseUrl).toString(),
     lastModified: new Date(),
-    changeFrequency: route === '' ? 'weekly' : 'monthly',
-    priority: route === '' ? 1 : 0.8,
+    changeFrequency: route.changeFrequency,
+    priority: route.priority,
   }))
 }

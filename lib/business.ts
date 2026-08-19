@@ -1,0 +1,17 @@
+export const BUSINESS = {
+  name: 'HJH Outdoor Operations LLC',
+  shortName: 'HJH Outdoor Operations',
+  url: 'https://www.hjhoutdoorops.com',
+  phone: '+14057567304',
+  phoneDisplay: '(405) 756-7304',
+  phoneAlt: '+15804580087',
+  phoneAltDisplay: '(580) 458-0087',
+  email: 'Hjhoutdoor@gmail.com',
+  locality: 'Marlow',
+  region: 'OK',
+  postalCode: '73055',
+  areaServed: 'Oklahoma',
+  hoursDisplay: 'Mon-Sat: 7AM - 6PM',
+  openingHours: ['Mo-Sa 07:00-18:00'],
+  sameAs: ['https://www.facebook.com/HJHoutdoor'],
+} as const
