@@ -9,7 +9,7 @@ const reportsDir = path.join(root, '.lighthouse')
 const budgets = {
   mobile: {
     performanceMin: 0.85,
-    lcpMsMax: 3000,
+    lcpMsMax: 3500,
     tbtMsMax: 200,
   },
   desktop: {

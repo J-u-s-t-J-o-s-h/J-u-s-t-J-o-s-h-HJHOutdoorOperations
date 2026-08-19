@@ -1,6 +1,6 @@
 'use client'
 
-import { useLayoutEffect, useRef, useCallback, type CSSProperties, type ReactNode } from 'react'
+import { useEffect, useRef, useCallback, type CSSProperties, type ReactNode } from 'react'
 import styles from './ElectricBorder.module.css'
 import { cn } from '@/lib/utils'
 
@@ -165,15 +165,16 @@ export default function ElectricBorder({
     [getCornerPoint]
   )
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const canvas = canvasRef.current
     const container = containerRef.current
     if (!canvas || !container) return
 
     const ctx = canvas.getContext('2d')
     if (!ctx) return
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-    const octaves = 10
+    const octaves = 3
     const lacunarity = 1.6
     const gain = 0.7
     const amplitude = chaos
@@ -181,6 +182,7 @@ export default function ElectricBorder({
     const baseFlatness = 0
     /** Room for stroke + noise; tighter on narrow viewports to reduce glow overflow / horizontal scroll */
     let borderOffsetActive = 60
+    let isVisible = true
 
     const updateSize = () => {
       borderOffsetActive =
@@ -247,7 +249,7 @@ export default function ElectricBorder({
         8,
         2 * (borderWidth + borderHeight) + 2 * Math.PI * radius
       )
-      const sampleCount = Math.max(32, Math.floor(approximatePerimeter / 2))
+      const sampleCount = Math.min(64, Math.max(24, Math.floor(approximatePerimeter / 8)))
 
       ctx.beginPath()
 
@@ -292,7 +294,11 @@ export default function ElectricBorder({
       ctx.closePath()
       ctx.stroke()
 
-      animationRef.current = requestAnimationFrame(drawElectricBorder)
+      if (!reduceMotion && isVisible) {
+        animationRef.current = requestAnimationFrame(drawElectricBorder)
+      } else {
+        animationRef.current = null
+      }
     }
 
     const resizeObserver = new ResizeObserver(() => {
@@ -300,14 +306,27 @@ export default function ElectricBorder({
     })
     resizeObserver.observe(container)
 
+    const visibilityObserver = new IntersectionObserver(
+      (entries) => {
+        isVisible = entries.some((entry) => entry.isIntersecting)
+        if (isVisible && !reduceMotion && animationRef.current === null) {
+          animationRef.current = requestAnimationFrame(drawElectricBorder)
+        }
+      },
+      { threshold: 0.05 }
+    )
+    visibilityObserver.observe(container)
+
     animationRef.current = requestAnimationFrame(drawElectricBorder)
 
     return () => {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
+        animationRef.current = null
       }
       if (resizeRaf) cancelAnimationFrame(resizeRaf)
       resizeObserver.disconnect()
+      visibilityObserver.disconnect()
       lastFrameTimeRef.current = 0
     }
   }, [color, speed, chaos, thickness, borderRadius, displacement, octavedNoise, getRoundedRectPoint])

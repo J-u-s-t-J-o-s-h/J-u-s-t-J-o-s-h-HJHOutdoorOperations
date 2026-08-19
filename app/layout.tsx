@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next'
 import { Barlow } from 'next/font/google'
-import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
 import { StickyCallButton } from '@/components/sticky-call-button'
 import { SkipLink } from '@/components/skip-link'
@@ -11,9 +10,10 @@ import './globals.css'
 
 const barlow = Barlow({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
+  weight: ['400', '700'],
   variable: '--font-barlow',
-  display: 'swap',
+  display: 'optional',
+  preload: false,
 })
 
 const defaultMetadataBase = getSiteUrl()
@@ -95,7 +95,6 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <JsonLd data={localBusinessJsonLd()} />
-        <Script src="https://elfsightcdn.com/platform.js" strategy="afterInteractive" />
         <SkipLink />
         {children}
         <StickyCallButton />

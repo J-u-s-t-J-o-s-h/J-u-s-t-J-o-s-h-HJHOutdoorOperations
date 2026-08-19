@@ -5,6 +5,7 @@ import { Phone, Mail, MapPin, Clock, CheckCircle2, ChevronDown, ChevronUp } from
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { PremiumSectionBackdrop } from '@/components/premium-section-backdrop'
+import { ElfsightWidget } from '@/components/elfsight-widget'
 
 const faqs = [
   {
@@ -89,11 +90,7 @@ export default function ContactPage() {
             <div className="grid lg:grid-cols-3 gap-12">
               {/* Form */}
               <div className="lg:col-span-2 card-panel p-7 lg:p-10">
-                {/* Elfsight Form Builder | HJH Lead Gen Form */}
-                <div
-                  className="elfsight-app-fe252980-983c-4859-bd8a-4f78cd2977c4"
-                  data-elfsight-app-lazy
-                />
+                <ElfsightWidget appId="fe252980-983c-4859-bd8a-4f78cd2977c4" />
               </div>
 
               {/* Contact Info */}
