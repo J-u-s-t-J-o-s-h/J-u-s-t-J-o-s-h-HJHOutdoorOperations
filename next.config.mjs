@@ -22,6 +22,8 @@ const scriptSrc = isProd
       "https://c.elfsight.com",
       "https://va.vercel-scripts.com",
       "https://vercel.live",
+      "https://www.googletagmanager.com",
+      "https://*.googletagmanager.com",
     ].join(' ')
   : [
       "script-src",
@@ -37,6 +39,8 @@ const scriptSrc = isProd
       "https://c.elfsight.com",
       "https://va.vercel-scripts.com",
       "https://vercel.live",
+      "https://www.googletagmanager.com",
+      "https://*.googletagmanager.com",
     ].join(' ')
 
 const connectSrc = isProd
@@ -53,6 +57,12 @@ const connectSrc = isProd
       "wss://*.elfsight.com",
       "https://va.vercel-scripts.com",
       "https://vercel.live",
+      "https://www.googletagmanager.com",
+      "https://*.googletagmanager.com",
+      "https://www.google-analytics.com",
+      "https://*.google-analytics.com",
+      "https://analytics.google.com",
+      "https://*.analytics.google.com",
     ].join(' ')
   : [
       "connect-src",
@@ -71,6 +81,12 @@ const connectSrc = isProd
       "wss://*.elfsight.com",
       "https://va.vercel-scripts.com",
       "https://vercel.live",
+      "https://www.googletagmanager.com",
+      "https://*.googletagmanager.com",
+      "https://www.google-analytics.com",
+      "https://*.google-analytics.com",
+      "https://analytics.google.com",
+      "https://*.analytics.google.com",
     ].join(' ')
 
 const styleSrc = [

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Barlow } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { StickyCallButton } from '@/components/sticky-call-button'
 import { SkipLink } from '@/components/skip-link'
 import { JsonLd } from '@/components/json-ld'
@@ -100,6 +101,7 @@ export default function RootLayout({
         <StickyCallButton />
         <Analytics />
       </body>
+      <GoogleAnalytics gaId="G-XDCL7C9K1E" />
     </html>
   )
 }
