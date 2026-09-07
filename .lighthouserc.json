@@ -8,7 +8,8 @@
       "startServerReadyPattern": "Ready",
       "numberOfRuns": 1,
       "settings": {
-        "chromeFlags": "--headless=new --incognito --disable-extensions"
+        "chromeFlags": "--headless=new --incognito --disable-extensions",
+        "throttlingMethod": "devtools"
       }
     },
     "assert": {

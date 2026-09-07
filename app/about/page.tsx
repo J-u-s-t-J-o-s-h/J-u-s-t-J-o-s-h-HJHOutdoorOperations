@@ -5,7 +5,17 @@ import { ArrowRight, CheckCircle2, Phone } from 'lucide-react'
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { PremiumSectionBackdrop } from '@/components/premium-section-backdrop'
+import { JsonLd } from '@/components/json-ld'
 import { siteMedia } from '@/lib/site-media'
+import { createPageMetadata } from '@/lib/seo'
+import { breadcrumbList } from '@/lib/structured-data'
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'About Us',
+  description:
+    'Meet HJH Outdoor Operations — an Oklahoma family-owned contractor for storm shelter installation, excavation, land clearing, grading, and septic work since 2014.',
+  path: '/about',
+})
 
 const values = [
   {
@@ -26,13 +36,6 @@ const values = [
   },
 ]
 
-export const metadata: Metadata = {
-  title: 'About HJH Outdoor Operations',
-  description:
-    'Meet HJH Outdoor Operations, a licensed Oklahoma contractor for storm shelters, excavation, and site work. Family owned, based in Marlow.',
-  alternates: { canonical: '/about' },
-}
-
 const stats = [
   { value: '10+', label: 'Years in Operation' },
   { value: '500+', label: 'Projects Completed' },
@@ -43,6 +46,12 @@ const stats = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbList([
+          { name: 'Home', path: '/' },
+          { name: 'About', path: '/about' },
+        ])}
+      />
       <SiteNav />
       <main id="main-content">
         {/* Page Header */}

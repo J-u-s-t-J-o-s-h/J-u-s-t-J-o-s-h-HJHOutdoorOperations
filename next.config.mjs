@@ -151,8 +151,10 @@ const nextConfig = {
   images: {
     unoptimized: !isProd,
     formats: ['image/avif', 'image/webp'],
+    qualities: [50, 55, 60, 70, 75],
   },
   allowedDevOrigins: [
+    '192.168.3.134',
     '192.168.3.138',
     '192.168.1.250',
     ...extraAllowedDevOrigins,

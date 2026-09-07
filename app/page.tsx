@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
@@ -24,6 +25,22 @@ import { HomeHeroBackdrop } from '@/components/home-hero-backdrop'
 import { HomeHashScroll } from '@/components/home-hash-scroll'
 import { homeProjectCards, siteMedia } from '@/lib/site-media'
 import { aboveGroundStartingPrice, belowGroundStartingPrice } from '@/lib/shelter-pricing'
+import { BUSINESS } from '@/lib/business'
+import { createPageMetadata } from '@/lib/seo'
+
+export const metadata: Metadata = {
+  ...createPageMetadata({
+    title: 'Storm Shelter Installation & Excavation in Oklahoma',
+    description:
+      'HJH Outdoor Operations LLC (HJH) installs storm shelters and handles excavation, dirt work, land clearing, grading, and septic services across Oklahoma — including Oklahoma City, Blanchard, Duncan, Lawton, and surrounding communities.',
+    path: '/',
+    ogTitle: BUSINESS.legalName,
+    ogDescription: 'Storm shelter installation, excavation, and outdoor site services in Oklahoma.',
+  }),
+  title: {
+    absolute: `${BUSINESS.legalName} | Storm Shelter Installation & Excavation | Oklahoma`,
+  },
+}
 
 const HomeServicesSection = dynamic(
   () => import('@/components/home-services-section').then((mod) => mod.HomeServicesSection),

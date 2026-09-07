@@ -6,24 +6,31 @@ import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { PremiumSectionBackdrop } from '@/components/premium-section-backdrop'
 import { ShelterPricingTables } from '@/components/shelter-pricing'
+import { JsonLd } from '@/components/json-ld'
 import {
   PRICING_DISCLAIMER,
   aboveGroundStartingPrice,
   belowGroundStartingPrice,
 } from '@/lib/shelter-pricing'
+import { createPageMetadata } from '@/lib/seo'
+import { breadcrumbList } from '@/lib/structured-data'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Storm Shelter Pricing',
   description:
     'View upfront storm shelter pricing, available sizes, and saferoom options from HJH Outdoor Operations. Standard rates within 60 miles of Marlow, OK.',
-  alternates: {
-    canonical: '/pricing',
-  },
-}
+  path: '/pricing',
+})
 
 export default function PricingPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbList([
+          { name: 'Home', path: '/' },
+          { name: 'Pricing', path: '/pricing' },
+        ])}
+      />
       <SiteNav />
       <main id="main-content">
         {/* Hero */}

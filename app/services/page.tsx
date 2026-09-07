@@ -5,7 +5,18 @@ import { ArrowRight, CheckCircle2, Phone, Shield, Shovel, Trees, Layers, Droplet
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { PremiumSectionBackdrop } from '@/components/premium-section-backdrop'
+import { JsonLd } from '@/components/json-ld'
+import { BUSINESS } from '@/lib/business'
 import { siteMedia } from '@/lib/site-media'
+import { createPageMetadata } from '@/lib/seo'
+import { breadcrumbList, servicePageSchema } from '@/lib/structured-data'
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Excavation, Storm Shelters & Site Services',
+  description:
+    'HJH Outdoor Operations provides excavation, storm shelter installation, dirt work, land clearing, site grading, and septic services for Oklahoma City, Blanchard, Duncan, Lawton, and communities statewide.',
+  path: '/services',
+})
 
 const services = [
   {
@@ -37,7 +48,7 @@ const services = [
     imageAlt: 'Large excavator working on Oklahoma jobsite',
     forWho: 'Homeowners, builders, and landowners needing earth moved for foundations, ponds, utilities, or drainage.',
     description:
-      'We operate backhoes and full-size excavation equipment for jobs of all sizes. From residential foundation prep to large-scale pond digging, we get the dirt moved efficiently and leave the site ready for the next phase. We work clean and on schedule.',
+      'We operate backhoes and full-size excavation equipment for jobs of all sizes. From residential foundation prep around Oklahoma City and surrounding communities to pond digging and utility trenches, we move dirt efficiently and leave the site ready for the next phase. We work clean and on schedule.',
     benefits: [
       'Backhoe service for residential and rural lots',
       'Foundation and basement excavation',
@@ -151,16 +162,22 @@ const services = [
   },
 ]
 
-export const metadata: Metadata = {
-  title: 'Outdoor Services in Oklahoma',
-  description:
-    'Storm shelter installation, backhoe and excavation, dirt work, land clearing, grading, and septic systems across Oklahoma. Get a free HJH estimate.',
-  alternates: { canonical: '/services' },
-}
-
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbList([
+            { name: 'Home', path: '/' },
+            { name: 'Services', path: '/services' },
+          ]),
+          servicePageSchema({
+            name: 'Outdoor Construction and Site Services',
+            description: BUSINESS.description,
+            path: '/services',
+          }),
+        ]}
+      />
       <SiteNav />
       <main id="main-content">
         {/* Header */}
@@ -176,7 +193,7 @@ export default function ServicesPage() {
               Everything Your Site Needs, Done Right
             </h1>
             <p className="text-warm-concrete text-lg mt-5 max-w-2xl leading-relaxed">
-              We handle the hard outdoor work — from storm shelters and septic systems to land clearing and excavation. One company, multiple capabilities, the same standard on every job.
+              HJH Outdoor Operations handles the hard outdoor work — storm shelter installation, excavation, septic systems, land clearing, and grading across Oklahoma. One company, multiple capabilities, the same standard on every job.
             </p>
           </div>
         </section>

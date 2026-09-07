@@ -17,26 +17,33 @@ import {
   FileText,
   CircleDollarSign,
   Tag,
+  Layers,
 } from 'lucide-react'
 import { Logo } from '@/components/logo'
+import { BUSINESS, primaryPhone } from '@/lib/business'
 
 const services = [
+  { label: 'All Services', href: '/services', icon: Shovel },
   { label: 'Storm Shelters', href: '/storm-shelter', icon: Shield },
   { label: 'Excavation', href: '/excavation', icon: Shovel },
   { label: 'Dirt Work', href: '/services#dirt-work', icon: Truck },
   { label: 'Land Clearing', href: '/services#land-clearing', icon: TreePine },
+  { label: 'Site Grading', href: '/services#site-grading', icon: Layers },
   { label: 'Septic Systems', href: '/services#septic', icon: Droplets },
 ]
 
 const quickLinks = [
   { label: 'Home', href: '/', icon: Home },
   { label: 'About Us', href: '/about', icon: Users },
+  { label: 'Services', href: '/services', icon: Shovel },
   { label: 'Our Work', href: '/projects', icon: Images },
   { label: 'Pricing', href: '/pricing', icon: Tag },
   { label: 'Financing', href: '/financing', icon: CircleDollarSign },
   { label: 'Contact', href: '/contact', icon: MessageSquare },
   { label: 'Get a Quote', href: '/contact', icon: FileText },
 ]
+
+const mainPhone = primaryPhone()
 
 export function SiteFooter() {
   return (
@@ -58,9 +65,9 @@ export function SiteFooter() {
           </div>
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <a
-              href="tel:+14057567304"
+              href={`tel:${mainPhone.tel}`}
               className="group flex items-center gap-3 px-8 py-4 bg-bone-linen text-soft-coal font-bold text-lg tracking-wide uppercase rounded-xl hover:bg-warm-concrete transition-all duration-200 shadow-lg shadow-matte-black/15 ring-1 ring-matte-black/10 hover:shadow-xl hover:-translate-y-0.5"
-              aria-label="Call us at (405) 756-7304"
+              aria-label={`Call us at ${mainPhone.label}`}
             >
               <Phone size={22} className="group-hover:animate-pulse" aria-hidden="true" />
               Call Now
@@ -82,13 +89,13 @@ export function SiteFooter() {
           <div className="lg:col-span-1">
             <Logo size="lg" showText className="mb-6" />
             <p className="text-base leading-relaxed text-soft-khaki/80 mb-6">
-              Oklahoma&apos;s trusted contractor for storm shelter installation, excavation, and site work. Family owned and operated. Quality-focused.
+              {BUSINESS.legalName} — Oklahoma&apos;s trusted contractor for storm shelter installation, excavation, and outdoor site work. Family owned and operated.
             </p>
             
             {/* Social Links */}
             <div className="flex items-center gap-3">
               <a
-                href="https://facebook.com/hjhoutdoor"
+                href={BUSINESS.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-12 h-12 bg-bone-linen/5 hover:bg-storm-blue/30 text-soft-khaki hover:text-bone-linen rounded-xl shadow-md shadow-matte-black/20 ring-1 ring-bone-linen/5 transition-all duration-200"
@@ -96,7 +103,6 @@ export function SiteFooter() {
               >
                 <Facebook size={22} aria-hidden="true" />
               </a>
-              {/* Add more social links as needed */}
             </div>
           </div>
 
@@ -149,40 +155,30 @@ export function SiteFooter() {
               Contact Us
             </h3>
             <ul className="flex flex-col gap-5">
+              {BUSINESS.phones.map((phone) => (
+                <li key={phone.tel}>
+                  <a
+                    href={`tel:${phone.tel}`}
+                    className="group flex items-center gap-4 py-1 text-base text-soft-khaki/80 hover:text-bone-linen transition-colors"
+                    aria-label={`Call us at ${phone.label}`}
+                  >
+                    <span className="flex items-center justify-center w-10 h-10 bg-bone-linen/5 group-hover:bg-storm-blue/30 rounded-xl shadow-sm ring-1 ring-bone-linen/5 transition-colors">
+                      <Phone size={20} className="text-equipment-gold" aria-hidden="true" />
+                    </span>
+                    <span className="font-semibold">{phone.label}</span>
+                  </a>
+                </li>
+              ))}
               <li>
                 <a
-                  href="tel:+14057567304"
+                  href={`mailto:${BUSINESS.email}`}
                   className="group flex items-center gap-4 py-1 text-base text-soft-khaki/80 hover:text-bone-linen transition-colors"
-                  aria-label="Call us at (405) 756-7304"
-                >
-                  <span className="flex items-center justify-center w-10 h-10 bg-bone-linen/5 group-hover:bg-storm-blue/30 rounded-xl shadow-sm ring-1 ring-bone-linen/5 transition-colors">
-                    <Phone size={20} className="text-equipment-gold" aria-hidden="true" />
-                  </span>
-                  <span className="font-semibold">(405) 756-7304</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="tel:+15804580087"
-                  className="group flex items-center gap-4 py-1 text-base text-soft-khaki/80 hover:text-bone-linen transition-colors"
-                  aria-label="Call us at (580) 458-0087"
-                >
-                  <span className="flex items-center justify-center w-10 h-10 bg-bone-linen/5 group-hover:bg-storm-blue/30 rounded-xl shadow-sm ring-1 ring-bone-linen/5 transition-colors">
-                    <Phone size={20} className="text-equipment-gold" aria-hidden="true" />
-                  </span>
-                  <span className="font-semibold">(580) 458-0087</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:Hjhoutdoor@gmail.com"
-                  className="group flex items-center gap-4 py-1 text-base text-soft-khaki/80 hover:text-bone-linen transition-colors"
-                  aria-label="Email us at Hjhoutdoor@gmail.com"
+                  aria-label={`Email us at ${BUSINESS.email}`}
                 >
                   <span className="flex items-center justify-center w-10 h-10 bg-bone-linen/5 group-hover:bg-storm-blue/30 rounded-xl shadow-sm ring-1 ring-bone-linen/5 transition-colors">
                     <Mail size={20} className="text-equipment-gold" aria-hidden="true" />
                   </span>
-                  <span>Hjhoutdoor@gmail.com</span>
+                  <span>{BUSINESS.email}</span>
                 </a>
               </li>
               <li>
@@ -190,7 +186,7 @@ export function SiteFooter() {
                   <span className="flex items-center justify-center w-10 h-10 bg-bone-linen/5 rounded-xl shadow-sm ring-1 ring-bone-linen/5">
                     <MapPin size={20} className="text-equipment-gold" aria-hidden="true" />
                   </span>
-                  <span>Based in Marlow, OK · Serving statewide</span>
+                  <span>{BUSINESS.serviceAreaSummary}</span>
                 </div>
               </li>
               <li>
@@ -198,7 +194,7 @@ export function SiteFooter() {
                   <span className="flex items-center justify-center w-10 h-10 bg-bone-linen/5 rounded-xl shadow-sm ring-1 ring-bone-linen/5">
                     <Clock size={20} className="text-equipment-gold" aria-hidden="true" />
                   </span>
-                  <span>Mon-Sat: 7AM - 6PM</span>
+                  <span>{BUSINESS.hoursFooterSummary}</span>
                 </div>
               </li>
             </ul>
@@ -208,7 +204,7 @@ export function SiteFooter() {
         {/* Bottom Bar */}
         <div className="mt-14 pt-8 border-t border-bone-linen/10 flex flex-col sm:flex-row items-center justify-between gap-4 max-lg:pb-[calc(4.5rem+env(safe-area-inset-bottom))] lg:pb-0">
           <p className="text-sm text-soft-khaki/50 text-center sm:text-left">
-            &copy; {new Date().getFullYear()} HJH Outdoor Operations LLC. All rights reserved.
+            &copy; {new Date().getFullYear()} {BUSINESS.legalName}. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-sm text-soft-khaki/50">
             <span>Oklahoma Licensed Contractor</span>

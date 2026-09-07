@@ -6,13 +6,16 @@ import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { PremiumSectionBackdrop } from '@/components/premium-section-backdrop'
 import { ShelterPricingTables } from '@/components/shelter-pricing'
+import { JsonLd } from '@/components/json-ld'
+import { createPageMetadata } from '@/lib/seo'
+import { breadcrumbList, faqPageSchema } from '@/lib/structured-data'
 
-export const metadata: Metadata = {
-  title: 'Storm Shelter Financing',
+export const metadata: Metadata = createPageMetadata({
+  title: 'Storm Shelter Financing in Oklahoma',
   description:
-    'Learn how to finance a storm shelter installation in Oklahoma with HJH Outdoor Operations. Clear estimates to take to your lender.',
-  alternates: { canonical: '/financing' },
-}
+    'Learn how HJH Outdoor Operations helps Oklahoma homeowners finance storm shelter installation, including tribal voucher support and clear project documentation.',
+  path: '/financing',
+})
 
 const faqs = [
   {
@@ -48,6 +51,15 @@ const faqs = [
 export default function FinancingPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbList([
+            { name: 'Home', path: '/' },
+            { name: 'Financing', path: '/financing' },
+          ]),
+          faqPageSchema(faqs),
+        ]}
+      />
       <SiteNav />
       <main id="main-content">
         <section className="relative isolate overflow-hidden pb-16 pt-[calc(9.75rem+env(safe-area-inset-top,0px))] lg:pb-20 lg:pt-[calc(11.75rem+env(safe-area-inset-top,0px))]">

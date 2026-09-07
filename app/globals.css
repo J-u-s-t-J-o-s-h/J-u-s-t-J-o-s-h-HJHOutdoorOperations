@@ -487,6 +487,30 @@
   transform: translateY(0) !important;
 }
 
+/* Homepage scroll reveal — pure CSS (no JS). Fallback state is fully visible, so
+   content is never hidden on browsers without scroll-timeline support. */
+@keyframes reveal-on-scroll-in {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-on-scroll {
+      animation: reveal-on-scroll-in linear both;
+      animation-timeline: view();
+      animation-range: entry 4% cover 16%;
+      will-change: opacity, transform;
+    }
+  }
+}
+
 @keyframes hero-logo-drop {
   0% {
     transform: translateY(-180px) scale(0.78) rotate(9deg);
