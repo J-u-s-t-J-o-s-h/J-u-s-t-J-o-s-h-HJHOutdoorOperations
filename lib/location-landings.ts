@@ -1,3 +1,4 @@
+import { BUSINESS } from '@/lib/business'
 import { siteMedia } from '@/lib/site-media'
 
 export type LocationLanding = {
@@ -165,6 +166,41 @@ export const locationLandings: LocationLanding[] = [
       { label: 'Storm shelter options', href: '/storm-shelter' },
       { label: 'Shelter pricing', href: '/pricing' },
       { label: 'Request a Blanchard estimate', href: '/contact' },
+    ],
+  },
+  {
+    slug: 'ada-backhoe',
+    path: '/ada/backhoe-service',
+    query: 'backhoe service ada',
+    city: 'Ada',
+    cityPossessive: "Ada's",
+    regionLabel: 'Ada, OK',
+    serviceLabel: 'Backhoe service',
+    title: 'Backhoe Service in Ada OK | HJH',
+    description: `Need backhoe service in Ada, OK? HJH handles excavation, trenching, and site prep. We travel from Marlow. Free estimates. Call ${BUSINESS.phoneDisplay}.`,
+    h1: 'Backhoe Service in Ada, OK',
+    eyebrow: 'Ada excavation',
+    intro:
+      'Looking for backhoe service in Ada, OK? HJH Outdoor Operations takes on residential and rural earthwork there from our Marlow shop. We travel for the job, quote mileage clearly, and run a licensed, insured crew.',
+    body: [
+      'Before the first bucket hits the ground, we plan access, utilities, and spoil placement. You get the travel cost up front, not on the invoice.',
+      'If you searched for backhoe service in Ada, send the address and a short description of the job. We will tell you if we can get to it this trip.',
+    ],
+    bullets: [
+      'Backhoe service for homes, shops, and acreage',
+      'Trenching for utilities, drainage, and footings',
+      'Site prep and spoil haul-off',
+      'Clear travel quote from our Marlow shop',
+    ],
+    localNote:
+      'Ada work comes out of our Marlow shop, so it is a drive. We take the job when the scope covers that travel, and we tell you that before anything is booked.',
+    image: siteMedia.services.excavation,
+    imageAlt: 'HJH backhoe and excavation equipment working an Oklahoma jobsite',
+    parent: { name: 'Excavation', path: '/excavation' },
+    related: [
+      { label: 'Statewide backhoe & excavation', href: '/excavation' },
+      { label: 'Storm shelter installation', href: '/storm-shelter' },
+      { label: 'Request an Ada estimate', href: '/contact' },
     ],
   },
 ]
