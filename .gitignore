@@ -17,3 +17,8 @@ next.user-config.*
 node_modules
 .next/
 .DS_Store
+
+# Lighthouse audit dumps and screenshot captures
+lh-*.json
+f[0-9]_*.jpg
+frame_*.jpg
