@@ -13,6 +13,7 @@ export const PUBLIC_ROUTES = [
   { path: '/bartlesville/backhoe-excavation', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/elk-city/backhoe-service', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blanchard/storm-shelter-installation', changeFrequency: 'monthly', priority: 0.7 },
+  { path: '/ada/backhoe-service', changeFrequency: 'monthly', priority: 0.7 },
 ] as const
 
 export const RETIRED_PATHS = [
