@@ -203,6 +203,40 @@ export const locationLandings: LocationLanding[] = [
       { label: 'Request an Ada estimate', href: '/contact' },
     ],
   },
+  {
+    slug: 'chickasha-backhoe',
+    path: '/chickasha/backhoe-service',
+    query: 'backhoe service chickasha',
+    city: 'Chickasha',
+    cityPossessive: "Chickasha's",
+    regionLabel: 'Chickasha, OK',
+    serviceLabel: 'Backhoe service',
+    title: 'Backhoe Service in Chickasha OK | HJH',
+    description: `Need backhoe service in Chickasha, OK? HJH handles excavation, trenching, and site prep from our Marlow shop. Free estimates. Call ${BUSINESS.phoneDisplay}.`,
+    h1: 'Backhoe Service in Chickasha, OK',
+    eyebrow: 'Chickasha backhoe work',
+    intro:
+      'Chickasha is in our home coverage from Marlow. HJH Outdoor Operations handles backhoe work on residential lots, shop pads, drainage cuts, and utility trenches, and we leave the site ready for the next trade.',
+    body: [
+      'Give us the Chickasha address and what you need dug. We sort out access and where spoil can go before we start, then you get a number.',
+      'A backhoe covers most house-lot trenches and pads. If the hole needs a larger excavator, we put that on the estimate instead of guessing on site.',
+    ],
+    bullets: [
+      'Residential backhoe work in Chickasha',
+      'Trenching for utilities, drainage, and footings',
+      'Site prep and spoil haul-off',
+      'Same crew that handles dirt work and grading',
+    ],
+    localNote: `From Marlow, Chickasha is home-area work. Use the estimate form or call ${BUSINESS.phoneDisplay} and we will answer during ${BUSINESS.hoursDisplay}.`,
+    image: siteMedia.services.excavation,
+    imageAlt: 'HJH backhoe and excavation equipment working an Oklahoma jobsite',
+    parent: { name: 'Excavation', path: '/excavation' },
+    related: [
+      { label: 'Statewide backhoe & excavation', href: '/excavation' },
+      { label: 'Site grading', href: '/services#site-grading' },
+      { label: 'Request a Chickasha estimate', href: '/contact' },
+    ],
+  },
 ]
 
 export function getLocationLanding(path: string): LocationLanding {
